@@ -1,0 +1,138 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        applicationId "com.fxy"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "第一版"
+        multiDexEnabled true
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "official"]
+
+        kapt {
+            //ARouter
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+//    signingConfigs {
+//        config {
+//            File signingConfigFile = file("../local.properties")
+//            Properties configs = new Properties()
+//            configs.load(new FileInputStream(signingConfigFile))
+//
+//            keyAlias configs['RELEASE_KEY_ALIAS']
+//            keyPassword configs['RELEASE_KEY_PASSWORD']
+//            storeFile file("../key-exam")
+//            storePassword configs['RELEASE_STORE_PASSWORD']
+//        }
+//    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "official"]
+
+            buildConfigField("String", "BUGLY_APP_ID", "\"dc6a6e9225\"")
+            //signingConfig signingConfigs.config
+        }
+
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "BUGLY_APP_ID", "\"dc6a6e9225\"")
+            //signingConfig signingConfigs.config
+
+            productFlavors.all { flavor ->
+                flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+            }
+
+            ndk {
+                abiFilters 'armeabi', 'armeabi-v7a'
+            }
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { out ->
+            if (out.outputFile != null && out.outputFile.name.endsWith('.apk')) {
+                if ('release' == variant.buildType.name) {
+                    def flavorName = variant.flavorName.startsWith("_") ?
+                            variant.flavorName.substring(1) : variant.flavorName
+                    out.outputFileName = "考试周_${flavorName}_${variant.versionName}.apk"
+                } else if ('debug' == variant.buildType.name) {
+                    out.outputFileName = "考试周_${variant.versionName}_debug.apk"
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        disable 'InvalidPackage'
+
+        checkReleaseBuilds false
+    }
+
+    productFlavors {
+        kuan {}
+    }
+
+    flavorDimensions "default"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/MANIFEST.MF'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/rxjava.properties'
+
+        doNotStrip '*/mips/*.so'
+        doNotStrip '*/mips64/*.so'
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation project(':lib_common')
+    if (!isModule.toBoolean()) {
+        implementation project(':module_main')
+    }
+    kapt deps.arouter.compiler
+}
