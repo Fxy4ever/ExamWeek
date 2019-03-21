@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_day_matters"
+        android:icon="@drawable/ic_day_matter"
+        android:title="@string/main_title_day_matters" />
+
+    <item
+        android:id="@+id/nav_tomato_alert"
+        android:icon="@drawable/ic_tomato_alert"
+        android:title="@string/main_title_tomato_alert" />
+
+    <item
+        android:id="@+id/nav_mine_word"
+        android:icon="@drawable/ic_mine_word"
+        android:title="@string/main_title_mine_word" />
+
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/ic_setting"
+        android:title="@string/main_title_setting" />
+</menu>

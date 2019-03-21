@@ -1,3 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="module_main_name" tools:ignore="ResourceName">module_main</string>
+    <string name="main_title_activity_main">MainActivity</string>
+    <string name="main_title_day_matters">倒数日</string>
+    <string name="main_title_tomato_alert">番茄闹钟</string>
+    <string name="main_title_mine_word">我的单词</string>
+    <string name="main_title_setting">设置</string>
 </resources>

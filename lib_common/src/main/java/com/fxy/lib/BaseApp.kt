@@ -6,6 +6,7 @@ import android.support.multidex.BuildConfig
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
+import com.fxy.lib.network.ApiGenerator
 import com.umeng.analytics.MobclickAgent
 import com.umeng.commonsdk.UMConfigure
 

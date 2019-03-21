@@ -1,5 +1,6 @@
 package com.fxy.main
 
+import junit.framework.Assert.assertEquals
 import org.junit.Test
 
 import org.junit.Assert.*
