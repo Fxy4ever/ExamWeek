@@ -12,9 +12,9 @@
         android:title="@string/main_title_tomato_alert" />
 
     <item
-        android:id="@+id/nav_mine_word"
+        android:id="@+id/nav_mine_todo"
         android:icon="@drawable/ic_mine_word"
-        android:title="@string/main_title_mine_word" />
+        android:title="@string/main_title_mine_todo" />
 
     <item
         android:id="@+id/nav_setting"

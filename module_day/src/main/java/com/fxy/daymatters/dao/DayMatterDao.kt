@@ -1,0 +1,31 @@
+package com.fxy.daymatters.dao
+
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Observer
+import android.arch.persistence.room.Dao
+import android.arch.persistence.room.Insert
+import android.arch.persistence.room.Query
+import android.arch.persistence.room.Update
+import com.fxy.daymatters.bean.Affair
+import io.reactivex.Flowable
+import io.reactivex.Observable
+
+/**
+ * create by:Fxymine4ever
+ * time: 2019/3/21
+ */
+@Dao
+interface DayMatterDao {
+
+    @Query("select * from Affair")
+    fun getDayMatters():Observable<MutableList<Affair>>
+
+    @Query("select * from Affair where classify = :classify")
+    fun getDayMattersByKind(classify:String):Flowable<MutableList<Affair>>
+
+    @Insert
+    fun insertDayMatters(bean:Affair):Long
+
+    @Update
+    fun updateDayMatters(bean:Affair):Int//根据primaryKey更新
+}

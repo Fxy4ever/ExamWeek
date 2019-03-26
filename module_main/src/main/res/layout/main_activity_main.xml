@@ -8,6 +8,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <include layout="@layout/common_toolbar"/>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/main_vp"
         android:layout_width="match_parent"
@@ -22,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
+        app:itemTextColor="@drawable/main_nav_selector"
+        app:itemIconTint="@drawable/main_nav_selector"
         app:menu="@menu/navigation" />
 
 </LinearLayout>

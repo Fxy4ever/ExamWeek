@@ -40,7 +40,7 @@ android{
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 java {
-                    exclude 'debug/**'//打包时忽略debug
+                    exclude 'com.fxy.daymatters.debug/**'//打包时忽略debug
                 }
             }
         }
