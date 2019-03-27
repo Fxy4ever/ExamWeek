@@ -3,14 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/daymatters_fragment_container"
     android:orientation="vertical"
     tools:context=".debug.TestActivity">
 
     <include layout="@layout/common_toolbar"/>
-
-    <fragment
-        android:id="@+id/daymatters_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 </LinearLayout>

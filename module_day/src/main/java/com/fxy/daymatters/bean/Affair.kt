@@ -10,11 +10,11 @@ import java.io.Serializable
  * time: 2019/3/21
  */
 @Entity(tableName = "Affair")
-data class Affair @JvmOverloads constructor(
+data class Affair constructor(
 
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
-        var dayMatterId:Long = -1,
+        var dayMatterId:Long = 0,
 
         @ColumnInfo(name = "title")
         var title: String? = "",
@@ -27,6 +27,9 @@ data class Affair @JvmOverloads constructor(
 
         @ColumnInfo(name = "isTop")
         var isTop: Boolean = false,
+
+        @ColumnInfo(name = "isChineseDay")
+        var isChineseDay: Boolean = false,
 
         @ColumnInfo(name = "endTime")
         var endTime: String?  = null,//结束日期可以为空

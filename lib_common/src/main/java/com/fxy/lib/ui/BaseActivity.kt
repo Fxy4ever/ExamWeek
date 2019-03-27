@@ -12,7 +12,6 @@ import android.view.View
 import android.view.WindowManager
 import com.fxy.lib.event.EmptyEvent
 import com.exam.lib_common.R
-import com.jude.swipbackhelper.SwipeBackHelper
 import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.common_toolbar.*
 import org.greenrobot.eventbus.EventBus
@@ -46,8 +45,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        SwipeBackHelper.onCreate(this)
-        SwipeBackHelper.getCurrentPage(this).setSwipeRelateEnable(true)
 
         //沉浸式
         if (Build.VERSION.SDK_INT >= 21) {
@@ -79,7 +76,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onPostCreate(savedInstanceState, persistentState)
-        SwipeBackHelper.onPostCreate(this)
     }
 
     //利用内联跳转Activity
@@ -102,6 +98,5 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        SwipeBackHelper.onDestroy(this)
     }
 }

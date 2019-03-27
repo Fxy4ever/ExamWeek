@@ -109,7 +109,9 @@
                     android:layout_height="wrap_content" />
                 <Switch
                     android:id="@+id/day_commit_sw_isChineseDay"
-                    android:layout_gravity="right"
+                    android:textOn="@string/day_sw_chinese"
+                    android:textOff="@string/day_sw_new"
+                    android:layout_gravity="end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -224,6 +226,7 @@
         </FrameLayout>
     </LinearLayout>
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/day_commit_choose_endDay"
         android:padding="10dp"
         android:orientation="horizontal"

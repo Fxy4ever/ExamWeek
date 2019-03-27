@@ -18,7 +18,7 @@ import io.reactivex.Observable
 interface DayMatterDao {
 
     @Query("select * from Affair")
-    fun getDayMatters():Observable<MutableList<Affair>>
+    fun getDayMatters():Flowable<MutableList<Affair>>
 
     @Query("select * from Affair where classify = :classify")
     fun getDayMattersByKind(classify:String):Flowable<MutableList<Affair>>

@@ -1,8 +1,8 @@
 package com.fxy.daymatters.ui
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
@@ -11,36 +11,67 @@ import android.view.ViewGroup
 import com.fxy.daymatters.R
 import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.ui.adapter.DayMattersAdapter
+import com.fxy.daymatters.viewmodel.CommitAffairViewModel
+import com.fxy.lib.ui.BaseFragment
+import com.fxy.lib.utils.extensions.observeNotNull
 import kotlinx.android.synthetic.main.day_day_fragment.view.*
+import org.jetbrains.anko.support.v4.startActivity
+import java.util.*
 
 /**
  * create by:Fxymine4ever
  * time: 2019/3/21
  */
-class DayMatterFragment : Fragment() {
+class DayMatterFragment : BaseFragment() {
     private lateinit var parent:View
 
     private lateinit var mAdapter:DayMattersAdapter
 
     private lateinit var list: MutableList<Affair>
 
+    private lateinit var model: CommitAffairViewModel
+
+    override val isFragmentContainer: Boolean = false
+
+    companion object {
+        val cal: Calendar = Calendar.getInstance()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        parent = inflater.inflate(R.layout.day_day_fragment,container)
+        parent = inflater.inflate(R.layout.day_day_fragment,container,false)
         context?.let {
+            model = ViewModelProviders.of(this).get(CommitAffairViewModel::class.java)
             initRv(it)
+            initLiveData()
+            initView()
         }
-//        val db = Room.databaseBuilder(
-//                BaseApp.context,
-//                DayMatterDatabase::class.java,
-//                "day_matter.db")
-//                .build()
         return parent
+    }
+
+    private fun initLiveData(){
+        model.mAffairs.observeNotNull(this) {affairs->
+            affairs?.let {
+                parent.day_main_sr.isRefreshing = false
+                mAdapter.changeAffairs(affairs)
+            }
+        }
     }
 
     private fun initRv(context: Context){
         list = mutableListOf()
         mAdapter = DayMattersAdapter(list,context,DayMattersAdapter.ItemType.GRID)
-        parent.daymatters_rv.adapter = mAdapter
-        parent.daymatters_rv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+        parent.day_main_rv.adapter = mAdapter
+        parent.day_main_rv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+        model.getAffairs()
+    }
+
+    private fun initView(){
+        parent.day_main_fab.setOnClickListener {
+            startActivity<CommitAffairActivity>()
+        }
+        parent.day_main_sr.setOnRefreshListener {
+            parent.day_main_sr.isRefreshing = true
+            model.getAffairs()
+        }
     }
 }

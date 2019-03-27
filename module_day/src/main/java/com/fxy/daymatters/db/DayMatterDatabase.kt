@@ -9,7 +9,7 @@ import com.fxy.daymatters.dao.DayMatterDao
  * create by:Fxymine4ever
  * time: 2019/3/21
  */
-@Database(entities = [Affair::class],version = 1)
+@Database(entities = [Affair::class],version = 1,exportSchema = false)
 abstract class DayMatterDatabase : RoomDatabase() {
     abstract fun dayMattersDao():DayMatterDao
 }

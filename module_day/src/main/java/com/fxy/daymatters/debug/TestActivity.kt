@@ -10,14 +10,13 @@ class TestActivity(override val isFragmentActivity: Boolean = true) : BaseActivi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.day_activity_test)
-        common_toolbar.init("倒数日")
+        common_toolbar.init("倒数日",listener = null)
         initFragment()
     }
 
     private fun initFragment(){
         val transaction = supportFragmentManager.beginTransaction()
         val fragment = DayMatterFragment()
-        transaction.replace(R.id.daymatters_fragment_container,fragment)
-        transaction.commit()
+        transaction.replace(R.id.daymatters_fragment_container,fragment).commit()
     }
 }

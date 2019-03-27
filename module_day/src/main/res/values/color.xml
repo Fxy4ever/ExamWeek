@@ -3,5 +3,6 @@
     <color name="daymatters_rv_bg">#F0EDED</color>
     <color name="day_white">#FFFFFF</color>
     <color name="day_origin">#DE7717</color>
+    <color name="day_blue">#798DFA</color>
     <color name="day_black">#000000</color>
 </resources>
