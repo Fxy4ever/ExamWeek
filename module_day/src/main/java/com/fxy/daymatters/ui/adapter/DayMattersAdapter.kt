@@ -1,6 +1,8 @@
 package com.fxy.daymatters.ui.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,8 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.fxy.daymatters.R
 import com.fxy.daymatters.bean.Affair
+import com.fxy.daymatters.ui.AffairDetailActivity
+import com.fxy.daymatters.util.clickWithTrigger
 import com.fxy.daymatters.util.getDayFromNow
 import com.fxy.daymatters.util.getToday
+import com.fxy.daymatters.util.withTrigger
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.day_rv_item_grid.view.*
 import org.jetbrains.anko.backgroundColor
 
@@ -52,7 +58,12 @@ class DayMattersAdapter(private var list:MutableList<Affair>,
 
             }
             it.day_item_time.text = list[position].startTime
-
+            it.clickWithTrigger{
+                val intent = Intent(context,AffairDetailActivity::class.java)
+                intent.putExtra("data",Gson().toJson(list))
+                intent.putExtra("curPosition",position)
+                context.startActivity(intent)
+            }
         }
     }
 

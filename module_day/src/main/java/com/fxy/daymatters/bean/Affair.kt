@@ -39,4 +39,4 @@ data class Affair constructor(
 
         @ColumnInfo(name = "textColor")
         var textColor: String = "#FFFFFF"
-)
+):Serializable

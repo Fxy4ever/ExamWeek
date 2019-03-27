@@ -11,4 +11,6 @@
     <string name="day_btn_save">保存</string>
     <string name="day_sw_chinese">农历</string>
     <string name="day_sw_new">新历</string>
+    <string name="day_btn_change_bg">背景</string>
+    <string name="day_btn_change">修改</string>
 </resources>
