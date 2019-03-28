@@ -263,7 +263,7 @@
                 android:id="@+id/day_commit_btn_delete"
                 android:visibility="gone"
                 android:background="#EA3145"
-                android:text="@string/day_btn_save"
+                android:text="@string/day_btn_delete"
                 android:textColor="#FFFFFF"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"

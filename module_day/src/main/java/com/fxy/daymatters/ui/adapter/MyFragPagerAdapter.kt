@@ -3,6 +3,7 @@ package com.fxy.daymatters.ui.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.view.PagerAdapter
 import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.ui.AffairDetailFragment
 
@@ -19,8 +20,4 @@ class MyFragPagerAdapter(private val list: MutableList<Affair>,fm: FragmentManag
     }
 
     override fun getCount(): Int = list.size
-
-    override fun getItemPosition(`object`: Any): Int {
-        return super.getItemPosition(`object`)
-    }
 }

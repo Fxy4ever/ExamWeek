@@ -29,6 +29,14 @@ class CommitAffairViewModel : ViewModel() {
         MutableLiveData<Long>().apply { value = -1 }
     }
 
+    val isDeleteData:MutableLiveData<Int> by lazy(LazyThreadSafetyMode.NONE){
+        MutableLiveData<Int>().apply { value = -1 }
+    }
+
+    val isUpdateData:MutableLiveData<Int> by lazy(LazyThreadSafetyMode.NONE){
+        MutableLiveData<Int>().apply { value = -1 }
+    }
+
 
     val mAffairs:MutableLiveData<MutableList<Affair>> by lazy(LazyThreadSafetyMode.NONE){
         MutableLiveData<MutableList<Affair>>()
@@ -43,6 +51,32 @@ class CommitAffairViewModel : ViewModel() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                         isInsertData.value = it
+                    }
+        }
+    }
+
+    fun deleteAffair(affair: Affair){
+        db?.let {database->
+            Observable.create<Int> {
+                it.onNext(database.dayMattersDao().deleteDayMatters(affair))
+            }
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe {
+                        isDeleteData.value = it
+                    }
+        }
+    }
+
+    fun updateAffair(affair: Affair){
+        db?.let {database->
+            Observable.create<Int> {
+                it.onNext(database.dayMattersDao().updateDayMatters(affair))
+            }
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe {
+                        isUpdateData.value = it
                     }
         }
     }

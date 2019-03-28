@@ -2,10 +2,7 @@ package com.fxy.daymatters.dao
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
-import android.arch.persistence.room.Update
+import android.arch.persistence.room.*
 import com.fxy.daymatters.bean.Affair
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -28,4 +25,7 @@ interface DayMatterDao {
 
     @Update
     fun updateDayMatters(bean:Affair):Int//根据primaryKey更新
+
+    @Delete
+    fun deleteDayMatters(bean:Affair):Int
 }

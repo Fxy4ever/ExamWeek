@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
 import com.fxy.daymatters.bean.Affair
+import com.fxy.daymatters.event.FinishDetailEvent
 import com.fxy.daymatters.ui.DayMatterFragment.Companion.cal
 import com.fxy.daymatters.util.ChinaDate
 import com.fxy.daymatters.util.getChineseDayOfWeek
@@ -14,13 +15,18 @@ import com.fxy.lib.ui.BaseActivity
 import com.fxy.lib.utils.extensions.gone
 import com.fxy.lib.utils.extensions.observeNotNull
 import com.fxy.lib.utils.extensions.visible
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.day_activity_commit_matter.*
+import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.toast
 import java.util.*
 
 
 class CommitAffairActivity : BaseActivity() {
 
+    /*
+    要设置的参数
+     */
     private var title:String = ""
     private var isChineseDay:Boolean = false
     private var startDay:String = "${cal.get(Calendar.YEAR)}-${cal.get(Calendar.MONTH)+1}-${cal.get(Calendar.DATE)} ${getChineseDayOfWeek("${cal.get(Calendar.YEAR)}-${cal.get(Calendar.MONTH)}-${cal.get(Calendar.DATE)} ")}"
@@ -30,7 +36,8 @@ class CommitAffairActivity : BaseActivity() {
     private var endDay = startDay
     private var endChineseDay:String = ""
     private var isEndDay:Boolean = false
-    var isChangeActivity:Boolean = false//是否为修改页面，这关系到是否显示DeleteBtn
+    private var id:Long = -1
+    private var isChangeActivity:Boolean = false//是否为修改页面，这关系到是否显示DeleteBtn
 
     private lateinit var model: CommitAffairViewModel
     override val isFragmentActivity: Boolean = false
@@ -38,7 +45,53 @@ class CommitAffairActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.fxy.daymatters.R.layout.day_activity_commit_matter)
-        common_toolbar.init("新增事件")
+
+        val affairFromDetail = Gson().fromJson(intent.getStringExtra("affair"),Affair::class.java)
+        if(affairFromDetail==null){
+            common_toolbar.init("新增事件")
+        }else{
+            common_toolbar.init("修改事件")
+           affairFromDetail.let {//获取传过来的内容
+
+               Log.d("test",it.toString())
+               id = it.dayMatterId
+
+               title = it.title!!
+               day_commit_et_name.setText(title)
+
+               isChineseDay = it.isChineseDay
+               if(isChineseDay){
+                   day_commit_sw_isChineseDay.isChecked = true
+               }
+               startDay = it.startTime!!
+               day_commit_tv_startDay.text = startDay
+
+               //TODO:农历
+
+               classify = it.classify!!
+               day_commit_tv_classify.text = classify
+
+               isNotify = it.isNotify
+               if(isNotify){
+                   day_commit_sw_notify.isChecked = true
+               }
+
+               it.endTime?.let {endTime->
+                   endDay = endTime
+                   isEndDay = true
+                   day_commit_sw_isEnd.isChecked = true
+                   day_commit_choose_endDay.visible()
+               }
+
+               isChangeActivity = true
+
+               it.background?.let {background->
+                    //TODO: 背景图片
+               }
+
+               isChangeActivity = true
+           }
+        }
         initSelect()
         initLiveData()
         initView()
@@ -49,6 +102,22 @@ class CommitAffairActivity : BaseActivity() {
         model.isInsertData.observeNotNull (this){
             if(it!! > 0){
                 toast("插入成功")
+                finish()
+            }
+        }
+
+        model.isDeleteData.observeNotNull (this){
+            if(it!! > 0){
+                toast("删除成功")
+                EventBus.getDefault().post(FinishDetailEvent())
+                finish()
+            }
+        }
+
+        model.isUpdateData.observeNotNull (this){
+            if(it!! > 0){
+                toast("修改成功")
+                EventBus.getDefault().post(FinishDetailEvent())
                 finish()
             }
         }
@@ -117,30 +186,38 @@ class CommitAffairActivity : BaseActivity() {
             isEndDay = isChecked
             if(isChecked)
                 day_commit_choose_endDay.visible()
-            else
+            else{
                 day_commit_choose_endDay.gone()
+                endDay = ""
+            }
+
 
         }
     }
 
     private fun initView(){
         day_commit_tv_startDay.text = startDay
-        Log.d("test",endDay)
         day_commit_tv_endDay.text = endDay
         day_commit_tv_classify.text = classify
+
         day_commit_btn_save.setOnClickListener {
-            val title = day_commit_et_name.text.toString()
+            title = day_commit_et_name.text.toString()
             if(title.isNotEmpty()){
                 val bean = Affair()
                 bean.startTime = startDay
                 bean.classify = classify
                 bean.title = title
+                bean.isNotify = isNotify
                 bean.isChineseDay = isChineseDay
                 if(isEndDay){
                     bean.endTime = endDay
                 }
-                bean.isNotify = isNotify
-                model.insertAffair(bean)
+                if(isChangeActivity){//修改页面
+                    bean.dayMatterId = id//如果是更新，得设置一个id
+                    model.updateAffair(bean)
+                }else{//添加页面
+                    model.insertAffair(bean)
+                }
             }else{
                 toast("请填写事件名称")
             }
@@ -148,7 +225,9 @@ class CommitAffairActivity : BaseActivity() {
         if(isChangeActivity){
             day_commit_btn_delete.visible()
             day_commit_btn_delete.setOnClickListener {
-                //删除事件
+                val bean = Affair()
+                bean.dayMatterId = id
+                model.deleteAffair(bean)
             }
         }
     }

@@ -17,5 +17,6 @@
     <string name="day_fab_btn_add">添加事务</string>
     <string name="day_fab_btn_classify">选择分类</string>
     <string name="day_fab_btn_layout">更改布局</string>
+    <string name="day_btn_delete">删除</string>
 
 </resources>
