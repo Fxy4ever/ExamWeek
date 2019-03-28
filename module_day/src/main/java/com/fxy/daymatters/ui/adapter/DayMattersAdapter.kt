@@ -17,6 +17,7 @@ import com.fxy.daymatters.util.getToday
 import com.fxy.daymatters.util.withTrigger
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.day_rv_item_grid.view.*
+import kotlinx.android.synthetic.main.day_rv_item_horizontal.view.*
 import org.jetbrains.anko.backgroundColor
 
 /**
@@ -34,30 +35,61 @@ class DayMattersAdapter(private var list:MutableList<Affair>,
 
     override fun onBindViewHolder(holder: DayMattersViewHolder, position: Int) {
         holder.itemView?.let {
-            if(!list[position].isChineseDay){//如果不是农历
-                val endTime = list[position].endTime ?: ""
-                if(!endTime.isNotEmpty()){//endDay为空，说明不是计算间隔
-                    val betweenDay = getDayFromNow(getToday(),list[position].startTime!! )
-                    Log.d("test","${list[position].title} betweenDay=$betweenDay")
-                    if(betweenDay > 0){//如果时间还没到
-                        it.day_item_title.text = "${list[position].title}还有"
-                        it.day_item_title.backgroundColor = context.resources.getColor(R.color.day_blue)
-                    }else{  //如果时间已经过了
-                        it.day_item_title.text = "${list[position].title}已经"
+            if(itemType == ItemType.GRID){//流布局
+                if(!list[position].isChineseDay){//如果不是农历
+                    val endTime = list[position].endTime ?: ""
+                    if(!endTime.isNotEmpty()){//endDay为空，说明不是计算间隔
+                        val betweenDay = getDayFromNow(getToday(),list[position].startTime!! )
+                        Log.d("test","${list[position].title} betweenDay=$betweenDay")
+                        if(betweenDay > 0){//如果时间还没到
+                            it.day_item_title.text = "${list[position].title}还有"
+                            it.day_item_title.backgroundColor = context.resources.getColor(R.color.day_blue)
+                        }else{  //如果时间已经过了
+                            it.day_item_title.text = "${list[position].title}已经"
+                            it.day_item_title.backgroundColor = context.resources.getColor(R.color.day_origin)
+                        }
+                        it.day_item_num.text = "${Math.abs(betweenDay)}"
+
+                    }else{
+                        val betweenDay = getDayFromNow(endTime,list[position].startTime!!)
+                        it.day_item_num.text = "${Math.abs(betweenDay)}"
+                        it.day_item_title.text = "${list[position].title}共"
                         it.day_item_title.backgroundColor = context.resources.getColor(R.color.day_origin)
                     }
-                    it.day_item_num.text = "${Math.abs(betweenDay)}"
+                }else{//TODO:农历还没想好怎么做Orz
 
-                }else{
-                    val betweenDay = getDayFromNow(endTime,list[position].startTime!!)
-                    it.day_item_num.text = "${Math.abs(betweenDay)}"
-                    it.day_item_title.text = "${list[position].title}共"
-                    it.day_item_title.backgroundColor = context.resources.getColor(R.color.day_origin)
                 }
-            }else{//TODO:农历还没想好怎么做Orz
+                it.day_item_time.text = list[position].startTime
+            }else{//垂直布局
+                if(!list[position].isChineseDay){
+                    val endTime = list[position].endTime ?: ""
+                    if(!endTime.isNotEmpty()){
+                        val betweenDay = getDayFromNow(getToday(),list[position].startTime!! )
+                        Log.d("test","${list[position].title} betweenDay=$betweenDay")
+                        if(betweenDay > 0){
+                            Log.d("test",list[position].toString())
+                            it.day_item_hor_title.text = "${list[position].title}还有"
+                            it.day_item_hor_num.backgroundColor = context.resources.getColor(R.color.day_blue)
+                            it.day_item_hor_day.backgroundColor = context.resources.getColor(R.color.day_blue2)
+                        }else{
+                            it.day_item_hor_title.text = "${list[position].title}已经"
+                            it.day_item_hor_num.backgroundColor = context.resources.getColor(R.color.day_origin)
+                            it.day_item_hor_day.backgroundColor = context.resources.getColor(R.color.day_origin2)
+                        }
+                        it.day_item_hor_num.text = "${Math.abs(betweenDay)}"
 
+                    }else{
+                        val betweenDay = getDayFromNow(endTime,list[position].startTime!!)
+                        it.day_item_hor_num.text = "${Math.abs(betweenDay)}"
+                        it.day_item_hor_title.text = "${list[position].title}共"
+                        it.day_item_hor_num.backgroundColor = context.resources.getColor(R.color.day_origin)
+                        it.day_item_hor_day.backgroundColor = context.resources.getColor(R.color.day_origin2)
+                    }
+                }else{//TODO:农历还没想好怎么做Orz
+
+                }
             }
-            it.day_item_time.text = list[position].startTime
+
             it.clickWithTrigger{
                 val intent = Intent(context,AffairDetailActivity::class.java)
                 intent.putExtra("data",Gson().toJson(list))

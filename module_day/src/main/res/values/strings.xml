@@ -6,11 +6,16 @@
     <string name="day_tv_target_info">(未来日期为倒数,过去日期为正数)</string>
     <string name="day_tv_chinese_day">是否为农历</string>
     <string name="day_tv_classify">分类</string>
-    <string name="day_tv_top">置顶</string>
+    <string name="day_tv_notify">每日提醒</string>
     <string name="day_tv_end_day">结束日</string>
     <string name="day_btn_save">保存</string>
     <string name="day_sw_chinese">农历</string>
     <string name="day_sw_new">新历</string>
     <string name="day_btn_change_bg">背景</string>
     <string name="day_btn_change">修改</string>
+    <string name="day_notify">还没有事件呢,请点击添加!~</string>
+    <string name="day_fab_btn_add">添加事务</string>
+    <string name="day_fab_btn_classify">选择分类</string>
+    <string name="day_fab_btn_layout">更改布局</string>
+
 </resources>

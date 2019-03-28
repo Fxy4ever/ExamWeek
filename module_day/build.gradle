@@ -10,6 +10,7 @@ dependencies {
 //    implementation "android.arch.persistence.room:compiler:1.1.1"
 //    implementation "android.arch.persistence.room:rxjava2:1.1.1"
     kapt deps.room.compiler
+    implementation 'com.github.clans:fab:1.6.4'
     implementation project(':lib_common')
 }
 repositories {

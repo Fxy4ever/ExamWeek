@@ -27,7 +27,7 @@
                 android:layout_height="25dp" />
             <TextView
                 android:layout_gravity="center"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:padding="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -38,6 +38,7 @@
         <EditText
             android:id="@+id/day_commit_et_name"
             android:hint="@string/day_et_affair_name"
+            android:textSize="15sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -66,7 +67,7 @@
                 android:layout_height="25dp" />
             <TextView
                 android:layout_gravity="center"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:padding="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -130,7 +131,7 @@
             android:layout_height="25dp" />
         <TextView
             android:layout_gravity="center"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:padding="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -165,17 +166,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/day_ic_top"
+            android:src="@drawable/day_ic_alert"
             android:layout_gravity="center"
             android:layout_width="25dp"
             android:layout_height="25dp" />
         <TextView
             android:layout_gravity="center"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:padding="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="@string/day_tv_top"
+            android:text="@string/day_tv_notify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <FrameLayout
@@ -183,7 +184,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Switch
-                android:id="@+id/day_commit_sw_isTop"
+                android:id="@+id/day_commit_sw_notify"
                 android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -207,7 +208,7 @@
             android:layout_height="25dp" />
         <TextView
             android:layout_gravity="center"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:padding="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"

@@ -26,7 +26,7 @@ class CommitAffairActivity : BaseActivity() {
     private var startDay:String = "${cal.get(Calendar.YEAR)}-${cal.get(Calendar.MONTH)+1}-${cal.get(Calendar.DATE)} ${getChineseDayOfWeek("${cal.get(Calendar.YEAR)}-${cal.get(Calendar.MONTH)}-${cal.get(Calendar.DATE)} ")}"
     private var startChineseDay:String = ""
     private var classify:String = "生活"//默认为生活
-    private var isTop:Boolean = false
+    private var isNotify:Boolean = false
     private var endDay = startDay
     private var endChineseDay:String = ""
     private var isEndDay:Boolean = false
@@ -93,8 +93,8 @@ class CommitAffairActivity : BaseActivity() {
             dateEndPicker.show()
         }
 
-        day_commit_sw_isTop.setOnCheckedChangeListener { _, isChecked ->
-            isTop = isChecked//是否置顶
+        day_commit_sw_notify.setOnCheckedChangeListener { _, isChecked ->
+            isNotify = isChecked//是否置顶
         }
 
         day_commit_sw_isChineseDay.setOnCheckedChangeListener { _, isChecked ->
@@ -139,7 +139,7 @@ class CommitAffairActivity : BaseActivity() {
                 if(isEndDay){
                     bean.endTime = endDay
                 }
-                bean.isTop = isTop
+                bean.isNotify = isNotify
                 model.insertAffair(bean)
             }else{
                 toast("请填写事件名称")

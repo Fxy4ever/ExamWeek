@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="day_MenuLabelsStyle">
+        <item name="android:background">@drawable/day_fab_label_background</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">none</item>
+    </style>
+
+    <style name="day_MenuButtonsStyle">
+        <item name="fab_size">mini</item>
+        <item name="fab_showAnimation">@anim/jump_from_down</item>
+        <item name="fab_hideAnimation">@anim/jump_to_down</item>
+        <item name="fab_shadowColor">#444</item>
+        <item name="fab_colorNormal">@color/day_blue2</item>
+        <item name="fab_colorPressed">@color/day_blue</item>
+        <item name="fab_colorRipple">@color/day_blue</item>
+    </style>
+</resources>

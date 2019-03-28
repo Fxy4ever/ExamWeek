@@ -25,8 +25,8 @@ data class Affair constructor(
         @ColumnInfo(name = "classify")
         var classify: String? = null,
 
-        @ColumnInfo(name = "isTop")
-        var isTop: Boolean = false,
+        @ColumnInfo(name = "isNotify")
+        var isNotify: Boolean = false,
 
         @ColumnInfo(name = "isChineseDay")
         var isChineseDay: Boolean = false,
