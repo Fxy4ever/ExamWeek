@@ -14,7 +14,9 @@ import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.ui.adapter.DayMattersAdapter
 import com.fxy.daymatters.viewmodel.CommitAffairViewModel
 import com.fxy.lib.ui.BaseFragment
+import com.fxy.lib.utils.extensions.gone
 import com.fxy.lib.utils.extensions.observeNotNull
+import com.fxy.lib.utils.extensions.visible
 import kotlinx.android.synthetic.main.day_day_fragment.*
 import kotlinx.android.synthetic.main.day_day_fragment.view.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -46,6 +48,7 @@ class DayMatterFragment : BaseFragment() {
         parent = inflater.inflate(R.layout.day_day_fragment,container,false)
         context?.let {
             model = ViewModelProviders.of(this).get(CommitAffairViewModel::class.java)
+            initLiveData()
             initRv(it)
             initView(it)
         }
@@ -54,13 +57,18 @@ class DayMatterFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        initLiveData()
+        model.getAffairs()
     }
 
     private fun initLiveData(){
         model.getAffairs()
         model.mAffairs.observeNotNull(this) {affairs->
             affairs?.let {
+                if(affairs.size == 0){
+                    parent.day_main_sr.gone()
+                }else{
+                    parent.day_main_sr.visible()
+                }
                 parent.day_main_sr.isRefreshing = false
                 mAdapter.changeAffairs(affairs)
             }

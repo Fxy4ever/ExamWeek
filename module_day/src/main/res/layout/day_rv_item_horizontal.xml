@@ -7,8 +7,7 @@
     app:shadowRadius="5dp"
     app:shadowColor="#E8E5E5"
     app:cardCornerRadius="5dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
+
     >
 
     <FrameLayout
@@ -19,8 +18,8 @@
         <TextView
             android:id="@+id/day_item_hor_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
+            android:layout_height="match_parent"
+            android:gravity="start|center"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingBottom="5dp"
