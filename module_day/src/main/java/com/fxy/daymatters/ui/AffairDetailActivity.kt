@@ -13,6 +13,7 @@ import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.event.FinishDetailEvent
 import com.fxy.daymatters.ui.adapter.MyFragPagerAdapter
 import com.fxy.daymatters.util.CardTransformer
+import com.fxy.daymatters.util.Injection
 import com.fxy.daymatters.viewmodel.CommitAffairViewModel
 import com.fxy.lib.ui.BaseActivity
 import com.fxy.lib.utils.extensions.observeNotNull
@@ -44,7 +45,8 @@ class AffairDetailActivity : BaseActivity() {
     }
 
     private fun initLiveData(){
-        model = ViewModelProviders.of(this).get(CommitAffairViewModel::class.java)
+        val factory = Injection.provideViewModelFactory(this)
+        model = ViewModelProviders.of(this,factory).get(CommitAffairViewModel::class.java)
         model.getAffairs()
         model.mAffairs.observeNotNull(this) {
             it?.let {data->

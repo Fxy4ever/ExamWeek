@@ -28,4 +28,7 @@ interface DayMatterDao {
 
     @Delete
     fun deleteDayMatters(bean:Affair):Int
+
+    @Query("select distinct classify from Affair")
+    fun getClassify():Flowable<MutableList<String>>
 }

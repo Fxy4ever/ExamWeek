@@ -2,12 +2,9 @@ package com.fxy.daymatters.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.arch.persistence.room.Room
+import android.util.Log
 import com.fxy.daymatters.bean.Affair
-import com.fxy.daymatters.db.DayMatterDatabase
-import com.fxy.daymatters.debug.TestApplication
-import com.fxy.lib.BaseApp
-import com.fxy.lib.utils.extensions.setSchedulers
+import com.fxy.daymatters.dao.DayMatterDao
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -16,14 +13,8 @@ import io.reactivex.schedulers.Schedulers
  * create by:Fxymine4ever
  * time: 2019/3/26
  */
-class CommitAffairViewModel : ViewModel() {
+class CommitAffairViewModel(private val dataSource: DayMatterDao) : ViewModel() {
 
-    val db: DayMatterDatabase? by lazy(mode = LazyThreadSafetyMode.NONE){
-        Room.databaseBuilder(TestApplication.context,
-                DayMatterDatabase::class.java,
-                "DayMatter.db"
-        ).build()
-    }
 
     val isInsertData:MutableLiveData<Long> by lazy(LazyThreadSafetyMode.NONE){
         MutableLiveData<Long>().apply { value = -1 }
@@ -37,15 +28,18 @@ class CommitAffairViewModel : ViewModel() {
         MutableLiveData<Int>().apply { value = -1 }
     }
 
-
     val mAffairs:MutableLiveData<MutableList<Affair>> by lazy(LazyThreadSafetyMode.NONE){
         MutableLiveData<MutableList<Affair>>()
     }
 
+    val mClassify:MutableLiveData<MutableList<String>> by lazy(LazyThreadSafetyMode.NONE){
+        MutableLiveData<MutableList<String>>()
+    }
+
     fun insertAffair(affair: Affair){
-        db?.let {database->
+        dataSource.let {dao->
             Observable.create<Long> {
-                it.onNext(database.dayMattersDao().insertDayMatters(affair))
+                it.onNext(dao.insertDayMatters(affair))
             }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -56,9 +50,9 @@ class CommitAffairViewModel : ViewModel() {
     }
 
     fun deleteAffair(affair: Affair){
-        db?.let {database->
+        dataSource.let {dao->
             Observable.create<Int> {
-                it.onNext(database.dayMattersDao().deleteDayMatters(affair))
+                it.onNext(dao.deleteDayMatters(affair))
             }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -69,9 +63,9 @@ class CommitAffairViewModel : ViewModel() {
     }
 
     fun updateAffair(affair: Affair){
-        db?.let {database->
+        dataSource.let {dao->
             Observable.create<Int> {
-                it.onNext(database.dayMattersDao().updateDayMatters(affair))
+                it.onNext(dao.updateDayMatters(affair))
             }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -82,13 +76,35 @@ class CommitAffairViewModel : ViewModel() {
     }
 
     fun getAffairs(){
-        db?.let {database->
-            database.dayMattersDao()
-                    .getDayMatters()
+        dataSource.let { dao->
+            dao.getDayMatters()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
                         mAffairs.value = it
+                    }
+        }
+    }
+
+    fun getAffairsByClassify(classify:String){
+        dataSource.let { dao->
+            dao.getDayMattersByKind(classify)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe {
+                        mAffairs.value = it
+                    }
+        }
+    }
+
+    fun getClassify(){
+        dataSource.let {dao->
+            dao.getClassify()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe {
+                        Log.d("test",it.toString())
+                        mClassify.value = it
                     }
         }
     }

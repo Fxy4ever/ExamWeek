@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fxy.lib.widget.JCardViewPlus xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
+    app:cardCornerRadius="10dp"
+    app:shadowRadius="0dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="分类"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginBottom="20dp"
+            android:textSize="24sp"
+            android:layout_gravity="top|center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/day_pop_classify_et"
+            android:background="@drawable/day_et_shape"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/day_pop_classify_delete"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="#EA3145"
+                android:textColor="@color/day_white"
+                android:layout_weight="1"
+                android:text="@string/day_btn_delete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/day_pop_classify_save"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/day_blue"
+                android:textColor="@color/day_white"
+                android:text="@string/day_btn_save"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</com.fxy.lib.widget.JCardViewPlus>

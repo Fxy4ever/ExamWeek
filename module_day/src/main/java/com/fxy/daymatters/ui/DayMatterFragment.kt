@@ -6,18 +6,21 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.fxy.daymatters.R
 import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.ui.adapter.DayMattersAdapter
+import com.fxy.daymatters.ui.pop.ClassifyListPop
+import com.fxy.daymatters.util.Injection
+import com.fxy.daymatters.viewmodel.AffairViewModelFactory
 import com.fxy.daymatters.viewmodel.CommitAffairViewModel
 import com.fxy.lib.ui.BaseFragment
 import com.fxy.lib.utils.extensions.gone
 import com.fxy.lib.utils.extensions.observeNotNull
 import com.fxy.lib.utils.extensions.visible
-import kotlinx.android.synthetic.main.day_day_fragment.*
 import kotlinx.android.synthetic.main.day_day_fragment.view.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -38,29 +41,32 @@ class DayMatterFragment : BaseFragment() {
 
     private var isGrid = true
 
+    private lateinit var listPop: ClassifyListPop
+
     override val isFragmentContainer: Boolean = false
 
     companion object {
-        val cal: Calendar = Calendar.getInstance()
+        val cal: Calendar = Calendar.getInstance(Locale.CHINA)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         parent = inflater.inflate(R.layout.day_day_fragment,container,false)
         context?.let {
-            model = ViewModelProviders.of(this).get(CommitAffairViewModel::class.java)
-            initLiveData()
+            val factory = AffairViewModelFactory(Injection.provideAffariDataSrouce(it))
+            model = ViewModelProviders.of(this,factory).get(CommitAffairViewModel::class.java)
+            initLiveData(it)
             initRv(it)
             initView(it)
         }
         return parent
     }
-
     override fun onResume() {
         super.onResume()
         model.getAffairs()
+        model.getClassify()
     }
 
-    private fun initLiveData(){
+    private fun initLiveData(context: Context){
         model.getAffairs()
         model.mAffairs.observeNotNull(this) {affairs->
             affairs?.let {
@@ -69,8 +75,16 @@ class DayMatterFragment : BaseFragment() {
                 }else{
                     parent.day_main_sr.visible()
                 }
+                refreshClassify(context)
                 parent.day_main_sr.isRefreshing = false
                 mAdapter.changeAffairs(affairs)
+            }
+        }
+        model.mClassify.observeNotNull(this){classifies->
+            listPop = if(classifies!=null&&classifies.size>0){
+                ClassifyListPop(context,classifies)
+            }else{
+                ClassifyListPop(context, mutableListOf())
             }
         }
     }
@@ -88,32 +102,66 @@ class DayMatterFragment : BaseFragment() {
 
         fabMenu.setClosedOnTouchOutside(false)
 
+        //添加fab
         parent.day_main_fab_add.setOnClickListener {
             startActivity<CommitAffairActivity>()
+            fabMenu.close(true)
         }
 
+
+        //分类fab
         parent.day_main_fab_classify.setOnClickListener {
             toast("切换分类")
+            model.getClassify()
+            listPop.showPopupWindow()
+            listPop.setListener {
+                Log.d("test",it)
+                if(it == "全部"){
+                    model.getAffairs()
+                }else{
+                    model.getAffairsByClassify(it)
+                }
+            }
+            fabMenu.close(true)
         }
 
+        //更换布局fab
         parent.day_main_fab_layout.setOnClickListener {
-            if(!isGrid){
-                parent.day_main_rv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
-                val newAdapter = DayMattersAdapter(list,context,DayMattersAdapter.ItemType.GRID)
-                parent.day_main_rv.adapter = newAdapter
-                parent.day_main_rv.requestLayout()
-                isGrid = true
-            }else{
-                parent.day_main_rv.layoutManager = LinearLayoutManager(context)
-                val newAdapter = DayMattersAdapter(list,context,DayMattersAdapter.ItemType.HORIZONTAL)
-                parent.day_main_rv.adapter = newAdapter
-                parent.day_main_rv.requestLayout()
-                isGrid = false
-            }
+            refreshRv(context)
+            fabMenu.close(true)
         }
         parent.day_main_sr.setOnRefreshListener {
             parent.day_main_sr.isRefreshing = true
             model.getAffairs()
+        }
+    }
+
+    fun refreshRv(context: Context){
+        if(!isGrid){
+            parent.day_main_rv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+            val newAdapter = DayMattersAdapter(list,context,DayMattersAdapter.ItemType.GRID)
+            parent.day_main_rv.adapter = newAdapter
+            parent.day_main_rv.requestLayout()
+        }else{
+            parent.day_main_rv.layoutManager = LinearLayoutManager(context)
+            val newAdapter = DayMattersAdapter(list,context,DayMattersAdapter.ItemType.HORIZONTAL)
+            parent.day_main_rv.adapter = newAdapter
+            parent.day_main_rv.requestLayout()
+        }
+        isGrid = !isGrid
+    }
+
+    fun refreshClassify(context: Context){
+        if(isGrid){
+            parent.day_main_rv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+            val newAdapter = DayMattersAdapter(list,context,DayMattersAdapter.ItemType.GRID)
+            parent.day_main_rv.adapter = newAdapter
+            parent.day_main_rv.requestLayout()
+        }else{
+            parent.day_main_rv.layoutManager = LinearLayoutManager(context)
+            val newAdapter = DayMattersAdapter(list,context,DayMattersAdapter.ItemType.HORIZONTAL)
+            parent.day_main_rv.adapter = newAdapter
+            parent.day_main_rv.requestLayout()
         }
     }
 }

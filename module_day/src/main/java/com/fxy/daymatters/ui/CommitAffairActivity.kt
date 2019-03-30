@@ -4,17 +4,18 @@ import android.app.DatePickerDialog
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.event.FinishDetailEvent
 import com.fxy.daymatters.ui.DayMatterFragment.Companion.cal
+import com.fxy.daymatters.ui.pop.ClassifyPop
 import com.fxy.daymatters.util.ChinaDate
+import com.fxy.daymatters.util.Injection
 import com.fxy.daymatters.util.getChineseDayOfWeek
 import com.fxy.daymatters.util.getDateFromString
 import com.fxy.daymatters.viewmodel.CommitAffairViewModel
 import com.fxy.lib.ui.BaseActivity
-import com.fxy.lib.utils.extensions.gone
-import com.fxy.lib.utils.extensions.observeNotNull
-import com.fxy.lib.utils.extensions.visible
+import com.fxy.lib.utils.extensions.*
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.day_activity_commit_matter.*
 import org.greenrobot.eventbus.EventBus
@@ -29,7 +30,7 @@ class CommitAffairActivity : BaseActivity() {
      */
     private var title:String = ""
     private var isChineseDay:Boolean = false
-    private var startDay:String = "${cal.get(Calendar.YEAR)}-${cal.get(Calendar.MONTH)+1}-${cal.get(Calendar.DATE)} ${getChineseDayOfWeek("${cal.get(Calendar.YEAR)}-${cal.get(Calendar.MONTH)}-${cal.get(Calendar.DATE)} ")}"
+    private var startDay:String = "${cal.get(Calendar.YEAR)}-${(cal.get(Calendar.MONTH))+1}-${cal.get(Calendar.DATE)} ${getChineseDayOfWeek("${cal.get(Calendar.YEAR)}-${(cal.get(Calendar.MONTH))+1}-${cal.get(Calendar.DATE)} ")}"
     private var startChineseDay:String = ""
     private var classify:String = "生活"//默认为生活
     private var isNotify:Boolean = false
@@ -47,58 +48,63 @@ class CommitAffairActivity : BaseActivity() {
         setContentView(com.fxy.daymatters.R.layout.day_activity_commit_matter)
 
         val affairFromDetail = Gson().fromJson(intent.getStringExtra("affair"),Affair::class.java)
-        if(affairFromDetail==null){
-            common_toolbar.init("新增事件")
-        }else{
-            common_toolbar.init("修改事件")
-           affairFromDetail.let {//获取传过来的内容
-
-               Log.d("test",it.toString())
-               id = it.dayMatterId
-
-               title = it.title!!
-               day_commit_et_name.setText(title)
-
-               isChineseDay = it.isChineseDay
-               if(isChineseDay){
-                   day_commit_sw_isChineseDay.isChecked = true
-               }
-               startDay = it.startTime!!
-               day_commit_tv_startDay.text = startDay
-
-               //TODO:农历
-
-               classify = it.classify!!
-               day_commit_tv_classify.text = classify
-
-               isNotify = it.isNotify
-               if(isNotify){
-                   day_commit_sw_notify.isChecked = true
-               }
-
-               it.endTime?.let {endTime->
-                   endDay = endTime
-                   isEndDay = true
-                   day_commit_sw_isEnd.isChecked = true
-                   day_commit_choose_endDay.visible()
-               }
-
-               isChangeActivity = true
-
-               it.background?.let {background->
-                    //TODO: 背景图片
-               }
-
-               isChangeActivity = true
-           }
-        }
+        jugdePage(affairFromDetail)
         initSelect()
         initLiveData()
         initView()
     }
 
+
+    private fun jugdePage(affair: Affair?){
+        if(affair == null){//新增页面
+            common_toolbar.init("新增事件")
+        }else{//修改页面
+            common_toolbar.init("修改事件")
+            affair.let {//获取传过来的内容
+                Log.d("test",it.toString())
+                id = it.dayMatterId
+
+                title = it.title!!
+                day_commit_et_name.setText(title)
+
+                isChineseDay = it.isChineseDay
+                if(isChineseDay){
+                    day_commit_sw_isChineseDay.isChecked = true
+                }
+                startDay = it.startTime!!
+                day_commit_tv_startDay.text = startDay
+
+                //TODO:农历
+
+                classify = it.classify!!
+                day_commit_tv_classify.text = classify
+
+                isNotify = it.isNotify
+                if(isNotify){
+                    day_commit_sw_notify.isChecked = true
+                }
+
+                it.endTime?.let {endTime->
+                    endDay = endTime
+                    isEndDay = true
+                    day_commit_sw_isEnd.isChecked = true
+                    day_commit_choose_endDay.visible()
+                }
+
+                isChangeActivity = true
+
+                it.background?.let {background->
+                    //TODO: 背景图片
+                }
+
+                isChangeActivity = true
+            }
+        }
+    }
+
     private fun initLiveData(){
-        model = ViewModelProviders.of(this).get(CommitAffairViewModel::class.java)
+        val factory = Injection.provideViewModelFactory(this)
+        model = ViewModelProviders.of(this,factory).get(CommitAffairViewModel::class.java)
         model.isInsertData.observeNotNull (this){
             if(it!! > 0){
                 toast("插入成功")
@@ -128,7 +134,6 @@ class CommitAffairActivity : BaseActivity() {
      */
     private fun initSelect(){
         //开始日期选择
-        val cal = Calendar.getInstance()
         val dateStartPicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
 
             startDay = "$year-${month+1}-$dayOfMonth ${getChineseDayOfWeek("$year-${month+1}-$dayOfMonth")}"
@@ -229,6 +234,17 @@ class CommitAffairActivity : BaseActivity() {
                 bean.dayMatterId = id
                 model.deleteAffair(bean)
             }
+        }
+
+        val classifyPop = ClassifyPop(this)
+        classifyPop.popupGravity = Gravity.CENTER
+
+        classifyPop.setChooseTextListener{
+            classify = it
+            day_commit_tv_classify.text = it
+        }
+        day_commit_tv_classify.setOnClickListener {
+            classifyPop.showPopupWindow()
         }
     }
 }
