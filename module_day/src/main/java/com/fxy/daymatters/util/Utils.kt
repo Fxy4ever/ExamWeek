@@ -1,6 +1,7 @@
 package com.fxy.daymatters.util
 
 import android.view.View
+import android.widget.EditText
 
 /**
  * create by:Fxymine4ever
@@ -63,4 +64,15 @@ private fun <T : View> T.clickEnable(): Boolean {
     }
     triggerLastTime = currentClickTime
     return flag
+}
+
+fun EditText.setFocused(){
+    this.isFocusable = true
+    this.isFocusableInTouchMode = true
+    this.requestFocus()
+}
+
+fun EditText.setSingle(){
+    this.setLines(1)
+    this.setSingleLine()
 }

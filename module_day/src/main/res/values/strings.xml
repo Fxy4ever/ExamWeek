@@ -18,5 +18,8 @@
     <string name="day_fab_btn_classify">选择分类</string>
     <string name="day_fab_btn_layout">更改布局</string>
     <string name="day_btn_delete">删除</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>

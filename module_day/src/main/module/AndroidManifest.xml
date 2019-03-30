@@ -10,12 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.AffairDetailActivity">
+        <receiver android:name=".ui.widget.AffairSmallWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
 
-        </activity>
-        <activity android:name=".ui.CommitAffairActivity">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/day_widget_affair" />
+        </receiver>
+        <service android:name=".ui.widget.AffairWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        </activity>
+
+        <activity android:name=".ui.AffairDetailActivity"></activity>
+        <activity android:name=".ui.CommitAffairActivity"></activity>
         <activity android:name=".debug.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

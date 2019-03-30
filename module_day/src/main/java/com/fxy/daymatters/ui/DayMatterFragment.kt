@@ -12,16 +12,22 @@ import android.view.View
 import android.view.ViewGroup
 import com.fxy.daymatters.R
 import com.fxy.daymatters.bean.Affair
+import com.fxy.daymatters.bean.Classify
 import com.fxy.daymatters.ui.adapter.DayMattersAdapter
 import com.fxy.daymatters.ui.pop.ClassifyListPop
+import com.fxy.daymatters.ui.widget.AffairSmallWidget
 import com.fxy.daymatters.util.Injection
 import com.fxy.daymatters.viewmodel.AffairViewModelFactory
 import com.fxy.daymatters.viewmodel.CommitAffairViewModel
 import com.fxy.lib.ui.BaseFragment
+import com.fxy.lib.utils.extensions.editor
 import com.fxy.lib.utils.extensions.gone
 import com.fxy.lib.utils.extensions.observeNotNull
 import com.fxy.lib.utils.extensions.visible
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.day_day_fragment.view.*
+import org.jetbrains.anko.defaultSharedPreferences
+import org.jetbrains.anko.sp
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import java.util.*
@@ -75,12 +81,22 @@ class DayMatterFragment : BaseFragment() {
                 }else{
                     parent.day_main_sr.visible()
                 }
+                context.defaultSharedPreferences.editor {
+                    putString(AffairSmallWidget.sharedName, Gson().toJson(affairs))
+                }
                 refreshClassify(context)
                 parent.day_main_sr.isRefreshing = false
                 mAdapter.changeAffairs(affairs)
             }
         }
         model.mClassify.observeNotNull(this){classifies->
+            context.defaultSharedPreferences.editor {
+                val mutableList = mutableListOf<Classify>()
+                classifies?.forEach {
+                    mutableList.add(Classify(it))
+                }
+                putString(AffairSmallWidget.sharedClassify, Gson().toJson(mutableList))
+            }
             listPop = if(classifies!=null&&classifies.size>0){
                 ClassifyListPop(context,classifies)
             }else{
@@ -115,7 +131,6 @@ class DayMatterFragment : BaseFragment() {
             model.getClassify()
             listPop.showPopupWindow()
             listPop.setListener {
-                Log.d("test",it)
                 if(it == "全部"){
                     model.getAffairs()
                 }else{
@@ -151,7 +166,7 @@ class DayMatterFragment : BaseFragment() {
         isGrid = !isGrid
     }
 
-    fun refreshClassify(context: Context){
+    private fun refreshClassify(context: Context){
         if(isGrid){
             parent.day_main_rv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
             val newAdapter = DayMattersAdapter(list,context,DayMattersAdapter.ItemType.GRID)

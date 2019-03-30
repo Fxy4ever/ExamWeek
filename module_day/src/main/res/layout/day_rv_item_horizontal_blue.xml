@@ -39,7 +39,7 @@
                 android:layout_gravity="end"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:background="@color/day_origin"
+                android:background="@color/day_blue"
                 android:textColor="@color/day_white"
                 android:textSize="18sp"
                 tools:text="83" />
@@ -51,7 +51,7 @@
                 android:paddingRight="10dp"
                 android:layout_gravity="end"
                 android:gravity="center"
-                android:background="@color/day_origin2"
+                android:background="@color/day_blue2"
                 android:textColor="@color/day_white"
                 android:textSize="18sp"
                 android:text="天" />

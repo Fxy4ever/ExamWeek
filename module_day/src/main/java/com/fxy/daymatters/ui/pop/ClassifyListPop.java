@@ -36,7 +36,6 @@ public class ClassifyListPop extends BasePopupWindow {
         if(data!=null && data.size()>0){
             Log.d("test",data.toString());
             ViewGroup container = findViewById(R.id.day_pop_classify_list_layout);
-            data.set(0,"全部");
             for (String s : data) {
                 TextView textView = new TextView(context);
                 textView.setPadding(0,20,0,20);

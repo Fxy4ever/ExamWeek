@@ -9,10 +9,7 @@ import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.event.FinishDetailEvent
 import com.fxy.daymatters.ui.DayMatterFragment.Companion.cal
 import com.fxy.daymatters.ui.pop.ClassifyPop
-import com.fxy.daymatters.util.ChinaDate
-import com.fxy.daymatters.util.Injection
-import com.fxy.daymatters.util.getChineseDayOfWeek
-import com.fxy.daymatters.util.getDateFromString
+import com.fxy.daymatters.util.*
 import com.fxy.daymatters.viewmodel.CommitAffairViewModel
 import com.fxy.lib.ui.BaseActivity
 import com.fxy.lib.utils.extensions.*
@@ -61,11 +58,11 @@ class CommitAffairActivity : BaseActivity() {
         }else{//修改页面
             common_toolbar.init("修改事件")
             affair.let {//获取传过来的内容
-                Log.d("test",it.toString())
                 id = it.dayMatterId
 
                 title = it.title!!
                 day_commit_et_name.setText(title)
+                day_commit_et_name.setSingle()
 
                 isChineseDay = it.isChineseDay
                 if(isChineseDay){

@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.day_classify_pop.view.*
 import org.jetbrains.anko.toast
 import razerdp.basepopup.BasePopupWindow
 import android.view.animation.Animation
-
+import com.fxy.daymatters.util.setFocused
 
 
 /**
@@ -29,6 +29,7 @@ class ClassifyPop constructor(context: Context) :
 
         view.day_pop_classify_save.setOnClickListener {
             val str = view.day_pop_classify_et.text.toString()
+            view.day_pop_classify_et.setFocused()
             if(str.isNotEmpty()){
                 onChooseTextListener(str)
                 dismiss()

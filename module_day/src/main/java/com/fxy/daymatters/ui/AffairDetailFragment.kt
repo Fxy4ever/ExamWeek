@@ -34,7 +34,6 @@ class AffairDetailFragment : Fragment() {
                 val endTime = affair.endTime ?: ""
                 if(!endTime.isNotEmpty()){//endDay为空，说明不是计算间隔
                     val betweenDay = getDayFromNow(getToday(),affair.startTime!! )
-                    Log.d("test","${affair.title} betweenDay=$betweenDay")
                     if(betweenDay > 0){//如果时间还没到
                         parent.day_detail_title.text = "${affair.title}还有"
                         parent.day_detail_title.backgroundColor = context.resources.getColor(R.color.day_blue)

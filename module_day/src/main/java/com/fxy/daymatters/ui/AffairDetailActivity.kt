@@ -50,7 +50,6 @@ class AffairDetailActivity : BaseActivity() {
         model.getAffairs()
         model.mAffairs.observeNotNull(this) {
             it?.let {data->
-                Log.d("test",it.toString())
                 affairs.clear()
                 affairs.addAll(data)
                 mAdapter.notifyDataSetChanged()

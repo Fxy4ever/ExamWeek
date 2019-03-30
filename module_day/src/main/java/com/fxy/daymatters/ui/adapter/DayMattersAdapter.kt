@@ -40,7 +40,6 @@ class DayMattersAdapter(private var list:MutableList<Affair>,
                     val endTime = list[position].endTime ?: ""
                     if(!endTime.isNotEmpty()){//endDay为空，说明不是计算间隔
                         val betweenDay = getDayFromNow(getToday(),list[position].startTime!! )
-                        Log.d("test","${list[position].title} betweenDay=$betweenDay")
                         if(betweenDay > 0){//如果时间还没到
                             it.day_item_title.text = "${list[position].title}还有"
                             it.day_item_title.backgroundColor = context.resources.getColor(R.color.day_blue)
@@ -65,9 +64,7 @@ class DayMattersAdapter(private var list:MutableList<Affair>,
                     val endTime = list[position].endTime ?: ""
                     if(!endTime.isNotEmpty()){
                         val betweenDay = getDayFromNow(getToday(),list[position].startTime!! )
-                        Log.d("test","${list[position].title} betweenDay=$betweenDay")
                         if(betweenDay > 0){
-                            Log.d("test",list[position].toString())
                             it.day_item_hor_title.text = "${list[position].title}还有"
                             it.day_item_hor_num.backgroundColor = context.resources.getColor(R.color.day_blue)
                             it.day_item_hor_day.backgroundColor = context.resources.getColor(R.color.day_blue2)

@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.dao.DayMatterDao
+import com.fxy.daymatters.ui.widget.AffairSmallWidget.Companion.classify
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -103,8 +104,11 @@ class CommitAffairViewModel(private val dataSource: DayMatterDao) : ViewModel() 
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe {
-                        Log.d("test",it.toString())
-                        mClassify.value = it
+                        if(it!=null&&it.size>0){
+                            it.add(it[0])
+                            it[0] = "全部"
+                            mClassify.value = it
+                        }
                     }
         }
     }
