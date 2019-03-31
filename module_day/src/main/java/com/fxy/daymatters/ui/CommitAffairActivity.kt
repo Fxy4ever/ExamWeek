@@ -134,7 +134,6 @@ class CommitAffairActivity : BaseActivity() {
         val dateStartPicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
 
             startDay = "$year-${month+1}-$dayOfMonth ${getChineseDayOfWeek("$year-${month+1}-$dayOfMonth")}"
-            Log.d("fxy",month.toString())
             if(isChineseDay){
                 val startDates = getDateFromString(startDay)
                 startChineseDay = ChinaDate.oneDay(startDates[0],startDates[1],startDates[2])

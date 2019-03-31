@@ -140,10 +140,10 @@ class AffairSmallWidget : AppWidgetProvider() {
                         }
                     }
                     getTitleTextViewId()->{
+                        //TODO:合代码更换跳转
                         val mIntent = Intent(context,TestActivity::class.java)
-                        context.startActivity(mIntent)
+                        context!!.startActivity(mIntent)
                     }
-
                 }
             }
         }

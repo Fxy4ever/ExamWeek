@@ -34,7 +34,6 @@ public class ClassifyListPop extends BasePopupWindow {
     public ClassifyListPop(Context context, List<String> data){
         super(context);
         if(data!=null && data.size()>0){
-            Log.d("test",data.toString());
             ViewGroup container = findViewById(R.id.day_pop_classify_list_layout);
             for (String s : data) {
                 TextView textView = new TextView(context);
