@@ -1,14 +1,19 @@
 package com.fxy.daymatters.ui.widget
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.support.annotation.IdRes
 import android.util.Log
 import android.util.TypedValue
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.fxy.daymatters.R
 import com.fxy.daymatters.bean.Affair
+import com.fxy.daymatters.debug.TestActivity
 import com.fxy.daymatters.util.getDayFromNow
 import com.fxy.daymatters.util.getToday
 import com.google.gson.Gson
@@ -33,7 +38,6 @@ class AffairWidgetService : RemoteViewsService() {
                                     private val intent: Intent,
                                     val classify: String) : RemoteViewsService.RemoteViewsFactory {
         private lateinit var data: MutableList<Affair>
-        private var temp: MutableList<Affair> = mutableListOf()//临时保存
         private var appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
 
         override fun onCreate() {
@@ -46,7 +50,6 @@ class AffairWidgetService : RemoteViewsService() {
                     context.defaultSharedPreferences.getString(AffairSmallWidget.sharedName, "")
                     , type
             )
-            temp.addAll(data)
         }
 
 
@@ -81,9 +84,9 @@ class AffairWidgetService : RemoteViewsService() {
                     setFillIntent(position, R.id.day_item_red_hor_layout, rv)
                 }
             }
-
             return rv
         }
+
 
         private fun setFillIntent(position: Int, id: Int, rv: RemoteViews) {
             val fillIntent = Intent()
@@ -96,8 +99,11 @@ class AffairWidgetService : RemoteViewsService() {
         override fun getItemId(position: Int): Long = position.toLong()
 
         override fun onDataSetChanged() {
-            data.clear()
-            data.addAll(temp)
+            val type = object : TypeToken<MutableList<Affair>>() {}.type
+            data = Gson().fromJson(
+                    context.defaultSharedPreferences.getString(AffairSmallWidget.sharedName, "")
+                    , type
+            )
             if(AffairSmallWidget.curClassify != "全部"){
                 data = data.filter { it.classify == AffairSmallWidget.curClassify }.toMutableList()
             }

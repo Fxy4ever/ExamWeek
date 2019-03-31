@@ -10,6 +10,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.fxy.daymatters.R
 import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.bean.Classify
@@ -19,6 +22,7 @@ import com.fxy.daymatters.ui.widget.AffairSmallWidget
 import com.fxy.daymatters.util.Injection
 import com.fxy.daymatters.viewmodel.AffairViewModelFactory
 import com.fxy.daymatters.viewmodel.CommitAffairViewModel
+import com.fxy.daymatters.workmanager.NotifyWork
 import com.fxy.lib.ui.BaseFragment
 import com.fxy.lib.utils.extensions.editor
 import com.fxy.lib.utils.extensions.gone
@@ -31,6 +35,7 @@ import org.jetbrains.anko.sp
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 /**
  * create by:Fxymine4ever
@@ -63,6 +68,7 @@ class DayMatterFragment : BaseFragment() {
             initLiveData(it)
             initRv(it)
             initView(it)
+            initWorkManager()
         }
         return parent
     }
@@ -178,5 +184,16 @@ class DayMatterFragment : BaseFragment() {
             parent.day_main_rv.adapter = newAdapter
             parent.day_main_rv.requestLayout()
         }
+    }
+
+    private fun initWorkManager(){
+        val request  = PeriodicWorkRequest
+                .Builder(NotifyWork::class.java,15,TimeUnit.MINUTES)
+                .build()
+        WorkManager.getInstance().enqueueUniquePeriodicWork(
+                "notifyAffair",
+                ExistingPeriodicWorkPolicy.KEEP,
+                request
+        )
     }
 }

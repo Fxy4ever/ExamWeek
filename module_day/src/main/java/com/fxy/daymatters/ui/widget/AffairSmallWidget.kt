@@ -15,9 +15,11 @@ import android.widget.RemoteViews
 
 import com.fxy.daymatters.R
 import com.fxy.daymatters.bean.Classify
+import com.fxy.daymatters.debug.TestActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.defaultSharedPreferences
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
@@ -27,7 +29,6 @@ class AffairSmallWidget : AppWidgetProvider() {
         const val sharedName = "com.fxy.exam.widget"
         const val sharedClassify = "com.fxy.exam.classify"
         const val BTN_CLICK = "com.fxy.exam.widget.click"
-        const val LIST_CLICK = "com.fxy.exam.widget.list.click"
         const val COLLECTION_VIEW_EXTRA = "com.fxy.exam.widget.view.extra"
         const val COLLECTION_VIEW_ACTION = "com.fxy.exam.widget.view.action"
         var curPosition = 0
@@ -57,8 +58,8 @@ class AffairSmallWidget : AppWidgetProvider() {
                 getClickPendingIntent(context,getLeftButtonId(), BTN_CLICK,javaClass))
         rv.setOnClickPendingIntent(getRightButtonId(),
                 getClickPendingIntent(context,getRightButtonId(), BTN_CLICK,javaClass))
-//        rv.setOnClickPendingIntent(getListViewId(),
-//                getClickPendingIntent(context,getListViewId(), LIST_CLICK,javaClass))
+        rv.setOnClickPendingIntent(getTitleTextViewId(),
+                getClickPendingIntent(context,getTitleTextViewId(), BTN_CLICK,javaClass))
 
 
         val typeToken = object : TypeToken<MutableList<Classify>>(){}.type
@@ -114,7 +115,7 @@ class AffairSmallWidget : AppWidgetProvider() {
     override fun onReceive(context: Context?, intent: Intent?) {
         intent?.let { i->
             val action = i.action
-            if(action == LIST_CLICK){
+            if(action == COLLECTION_VIEW_ACTION){
                 val appWidgetId = i.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                         AppWidgetManager.INVALID_APPWIDGET_ID)
                 val viewIndex = i.getIntExtra(COLLECTION_VIEW_EXTRA,0)
@@ -139,8 +140,10 @@ class AffairSmallWidget : AppWidgetProvider() {
                         }
                     }
                     getTitleTextViewId()->{
-                        context!!.toast("标题")
+                        val mIntent = Intent(context,TestActivity::class.java)
+                        context.startActivity(mIntent)
                     }
+
                 }
             }
         }
@@ -153,8 +156,6 @@ class AffairSmallWidget : AppWidgetProvider() {
     private fun getRightButtonId():Int = R.id.day_widget_right
 
     private fun getTitleTextViewId():Int = R.id.day_widget_text
-
-    private fun getListViewId():Int = R.id.day_widget_list
 
     private fun getRemotesView(context: Context):RemoteViews = RemoteViews(context.packageName,R.layout.day_widget_small_affair)
 }
