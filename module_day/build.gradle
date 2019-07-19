@@ -12,6 +12,7 @@ dependencies {
     kapt deps.room.compiler
     implementation 'com.github.clans:fab:1.6.4'
     implementation project(':lib_common')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
     mavenCentral()
