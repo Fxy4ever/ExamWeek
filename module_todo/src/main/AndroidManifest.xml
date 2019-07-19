@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.fxy.moduletodo">
+
+    <application
+        android:theme="@style/Theme.Design.Light.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".debug.TestActivity">
+
+        </activity>
+    </application>
+
+</manifest>

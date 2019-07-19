@@ -1,0 +1,16 @@
+apply from: module_config
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: "org.jetbrains.kotlin.kapt"
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    kapt deps.room.compiler
+    implementation project(':lib_common')
+}
+repositories {
+    mavenCentral()
+}

@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/lib_common" />
             <option value="$PROJECT_DIR$/module_day" />
             <option value="$PROJECT_DIR$/module_main" />
+            <option value="$PROJECT_DIR$/module_todo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
