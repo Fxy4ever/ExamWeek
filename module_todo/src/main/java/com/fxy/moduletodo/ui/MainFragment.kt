@@ -3,14 +3,19 @@ package com.fxy.moduletodo.ui
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import com.fxy.lib.ui.BaseFragment
 import com.fxy.lib.utils.extensions.observe
 import com.fxy.moduletodo.R
+import com.fxy.moduletodo.bean.TodoList
+import com.fxy.moduletodo.ui.adapter.TodoListAdapter
 import com.fxy.moduletodo.util.Injection
 import com.fxy.moduletodo.viewmodel.TodoListViewModel
+import kotlinx.android.synthetic.main.todo_fragment_main.*
 import org.jetbrains.anko.support.v4.toast
 
 /**
@@ -22,6 +27,8 @@ class MainFragment : BaseFragment() {
 
     private lateinit var parent:View
     private lateinit var model:TodoListViewModel
+    private val list: MutableList<TodoList> = mutableListOf()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         parent = inflater.inflate(R.layout.todo_fragment_main,container,false)
         if (context == null) return null
@@ -34,8 +41,14 @@ class MainFragment : BaseFragment() {
 
     private fun initData(){
         model.getTodoList()
+        val mAdapter = TodoListAdapter(context!!,list)
+        todo_main_rv.adapter = mAdapter
+        todo_main_rv.layoutManager = LinearLayoutManager(context!!)
+
         model.todoList.observe(this) { list->
-            toast(list.toString())
+            if(list != null  && list.size > 0){
+                this.list.addAll(list)
+            }
         }
     }
 

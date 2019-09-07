@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -7,5 +7,22 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <declare-styleable name="ShadowLayout">
+        <attr name="shadowRadius" format="dimension"/>
+        <attr name="shadowColor" format="color"/>
+        <attr name="shadowWidth" format="dimension"/>
+        <attr name="shadowHeight" format="dimension"/>
+        <attr name="cornerRadius" format="dimension"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="borderColor" format="dimension"/>
+        <attr name="shadowSides" format="flags">
+            <flag name="Left" value="1"/>
+            <flag name="Right" value="2"/>
+            <flag name="Top" value="4"/>
+            <flag name="Bottom" value="8"/>
+            <flag name="All" value="15"/>
+        </attr>
+    </declare-styleable>
 
 </resources>

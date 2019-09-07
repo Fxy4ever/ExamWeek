@@ -20,6 +20,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.defaultSharedPreferences
 import java.util.*
+import kotlin.math.abs
 
 /**
  * create by:Fxymine4ever
@@ -62,17 +63,17 @@ class NotifyWork(val context: Context,workerParams:WorkerParameters) :
             val endTime = it.endTime ?: ""
             val title = "倒数提醒"
             val content:String
-            if (!endTime.isNotEmpty()) {//endDay为空，说明不是计算间隔
+            if (endTime.isEmpty()) {//endDay为空，说明不是计算间隔
                 val betweenDay = getDayFromNow(getToday(), it.startTime!!)
                 if (betweenDay > 0) {//如果时间还没到
-                    content = "距离${it.title}还有${Math.abs(betweenDay)}天了"
+                    content = "距离${it.title}还有${abs(betweenDay)}天了"
                 } else {  //如果时间已经过了
-                    content = "距离${it.title}已经${Math.abs(betweenDay)}天了"
+                    content = "距离${it.title}已经${abs(betweenDay)}天了"
                 }
 
             } else {
                 val betweenDay = getDayFromNow(endTime, it.startTime!!)
-                content = "距离${it.title}共${Math.abs(betweenDay)}天了"
+                content = "距离${it.title}共${abs(betweenDay)}天了"
             }
 
             val intent = Intent(applicationContext,TestActivity::class.java)

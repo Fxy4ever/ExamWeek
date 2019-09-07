@@ -30,6 +30,7 @@ class TodoListAdapter(val context:Context,var list: MutableList<TodoList>) : Rec
         val important:ImageView = itemView.findViewById(R.id.todo_rv_important)
         val content:TextView = itemView.findViewById(R.id.todo_rv_content)
         //TODO:数据处理
+        
     }
 
     inner class ViewHolder(itemView:View): RecyclerView.ViewHolder(itemView) {

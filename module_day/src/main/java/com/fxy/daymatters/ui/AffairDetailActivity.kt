@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.widget.SeekBar
 import com.fxy.daymatters.R
 import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.event.FinishDetailEvent
@@ -62,7 +63,6 @@ class AffairDetailActivity : BaseActivity() {
         affairs = mutableListOf()
         curPosition = intent.getIntExtra("curPosition",0)
         mAdapter = MyFragPagerAdapter(affairs,supportFragmentManager)
-
         day_detail_vp.adapter = mAdapter
         day_detail_vp.offscreenPageLimit = 3
         day_detail_vp.setPageTransformer(true,CardTransformer())

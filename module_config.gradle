@@ -21,7 +21,7 @@ android{
     defaultConfig{
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
-
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         kapt {
