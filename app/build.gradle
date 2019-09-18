@@ -129,12 +129,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':lib_common')
     if (!isModule.toBoolean()) {
         implementation project(':module_main')
+        implementation project(':module_day')
+        implementation project(':module_todo')
+
     }
     kapt deps.arouter.compiler
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation project(path: ':lib_common')
 }
 repositories {
     mavenCentral()

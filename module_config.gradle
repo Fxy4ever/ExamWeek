@@ -23,9 +23,8 @@ android{
         targetSdkVersion build_versions.target_sdk
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
         kapt {
-            //Arouter
+            //ARouter
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())
             }

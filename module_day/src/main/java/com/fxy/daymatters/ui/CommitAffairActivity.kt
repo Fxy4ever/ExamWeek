@@ -5,12 +5,14 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.event.FinishDetailEvent
 import com.fxy.daymatters.ui.DayMatterFragment.Companion.cal
 import com.fxy.daymatters.ui.pop.ClassifyPop
 import com.fxy.daymatters.util.*
 import com.fxy.daymatters.viewmodel.CommitAffairViewModel
+import com.fxy.lib.config.DAY_AFFAIR
 import com.fxy.lib.ui.BaseActivity
 import com.fxy.lib.utils.extensions.*
 import com.google.gson.Gson
@@ -19,7 +21,7 @@ import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.toast
 import java.util.*
 
-
+@Route(path = DAY_AFFAIR)
 class CommitAffairActivity : BaseActivity() {
 
     /*

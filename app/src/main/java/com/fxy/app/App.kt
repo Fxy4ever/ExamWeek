@@ -18,6 +18,10 @@ class App : BaseApp() {
     override fun onCreate() {
         super.onCreate()
         initBugly()
+        if(BuildConfig.DEBUG){
+            ARouter.openDebug()
+            ARouter.openLog()
+        }
         ARouter.init(this)
     }
 

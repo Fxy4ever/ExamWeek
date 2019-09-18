@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fxy.daymatters.R;
+import com.fxy.daymatters.bean.Classify;
 
 import java.util.List;
 
@@ -31,19 +32,20 @@ public class ClassifyListPop extends BasePopupWindow {
         this.listener = listener;
     }
 
-    public ClassifyListPop(Context context, List<String> data){
+    public ClassifyListPop(Context context, List<Classify> data){
         super(context);
+        System.out.println("classify");
         if(data!=null && data.size()>0){
             ViewGroup container = findViewById(R.id.day_pop_classify_list_layout);
-            for (String s : data) {
+            for (Classify s : data) {
                 TextView textView = new TextView(context);
                 textView.setPadding(0,20,0,20);
-                textView.setText(s);
+                textView.setText(s.getName());
                 textView.setGravity(Gravity.CENTER);
                 textView.setTextSize(18.0f);
                 textView.setTextColor(Color.parseColor("#000000"));
                 textView.setOnClickListener(v->{
-                    listener.OnGetChoose(s);
+                    listener.OnGetChoose(s.getName());
                     dismiss();
                 });
                 container.addView(textView);
@@ -67,7 +69,7 @@ public class ClassifyListPop extends BasePopupWindow {
         return getDefaultScaleAnimation(false);
     }
 
-    interface OnGetChooseListener{
+    public interface OnGetChooseListener{
         void OnGetChoose(String choose);
     }
 }

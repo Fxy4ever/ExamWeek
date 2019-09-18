@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.fxy.lib.config.TODO_MAIN
 import com.fxy.lib.ui.BaseFragment
 import com.fxy.lib.utils.extensions.observe
 import com.fxy.moduletodo.R
@@ -16,12 +18,14 @@ import com.fxy.moduletodo.ui.adapter.TodoListAdapter
 import com.fxy.moduletodo.util.Injection
 import com.fxy.moduletodo.viewmodel.TodoListViewModel
 import kotlinx.android.synthetic.main.todo_fragment_main.*
-import org.jetbrains.anko.support.v4.toast
+import kotlinx.android.synthetic.main.todo_fragment_main.view.*
 
 /**
  * create by:Fxymine4ever
  * time: 2019/4/9
  */
+
+@Route(path = TODO_MAIN)
 class MainFragment : BaseFragment() {
     override val isFragmentContainer: Boolean = false
 
@@ -42,8 +46,8 @@ class MainFragment : BaseFragment() {
     private fun initData(){
         model.getTodoList()
         val mAdapter = TodoListAdapter(context!!,list)
-        todo_main_rv.adapter = mAdapter
-        todo_main_rv.layoutManager = LinearLayoutManager(context!!)
+        parent.todo_main_rv.adapter = mAdapter
+        parent.todo_main_rv.layoutManager = LinearLayoutManager(context!!)
 
         model.todoList.observe(this) { list->
             if(list != null  && list.size > 0){

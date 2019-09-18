@@ -4,7 +4,6 @@
     package="com.fxy.moduletodo">
 
     <application
-        android:theme="@style/Theme.Design.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".debug.TestActivity">
 

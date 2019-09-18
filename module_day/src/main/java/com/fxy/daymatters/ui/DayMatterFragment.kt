@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.fxy.daymatters.R
 import com.fxy.daymatters.bean.Affair
 import com.fxy.daymatters.bean.Classify
@@ -23,6 +24,7 @@ import com.fxy.daymatters.util.Injection
 import com.fxy.daymatters.viewmodel.AffairViewModelFactory
 import com.fxy.daymatters.viewmodel.CommitAffairViewModel
 import com.fxy.daymatters.workmanager.NotifyWork
+import com.fxy.lib.config.DAY_MAIN
 import com.fxy.lib.ui.BaseFragment
 import com.fxy.lib.utils.extensions.editor
 import com.fxy.lib.utils.extensions.gone
@@ -31,7 +33,6 @@ import com.fxy.lib.utils.extensions.visible
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.day_day_fragment.view.*
 import org.jetbrains.anko.defaultSharedPreferences
-import org.jetbrains.anko.sp
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import java.util.*
@@ -41,8 +42,9 @@ import java.util.concurrent.TimeUnit
  * create by:Fxymine4ever
  * time: 2019/3/21
  */
+@Route(path = DAY_MAIN)
 class DayMatterFragment : BaseFragment() {
-    private lateinit var parent:View
+    lateinit var parent:View
 
     private lateinit var mAdapter:DayMattersAdapter
 
@@ -55,6 +57,8 @@ class DayMatterFragment : BaseFragment() {
     private lateinit var listPop: ClassifyListPop
 
     override val isFragmentContainer: Boolean = false
+
+    private val classlist = mutableListOf<Classify>()
 
     companion object {
         val cal: Calendar = Calendar.getInstance(Locale.CHINA)
@@ -102,11 +106,10 @@ class DayMatterFragment : BaseFragment() {
                     mutableList.add(Classify(it))
                 }
                 putString(AffairSmallWidget.sharedClassify, Gson().toJson(mutableList))
-            }
-            listPop = if(classifies!=null&&classifies.size>0){
-                ClassifyListPop(context,classifies)
-            }else{
-                ClassifyListPop(context, mutableListOf())
+                if(classifies != null && classifies.size>0){
+                    classlist.clear()
+                    classlist.addAll(mutableList)
+                }
             }
         }
     }
@@ -135,6 +138,7 @@ class DayMatterFragment : BaseFragment() {
         parent.day_main_fab_classify.setOnClickListener {
             toast("切换分类")
             model.getClassify()
+            listPop = ClassifyListPop(context,classlist)
             listPop.showPopupWindow()
             listPop.setListener {
                 if(it == "全部"){

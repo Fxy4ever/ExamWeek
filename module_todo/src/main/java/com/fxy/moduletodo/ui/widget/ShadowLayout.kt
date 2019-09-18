@@ -137,7 +137,7 @@ class ShadowLayout @JvmOverloads constructor(
     override fun dispatchDraw(canvas: Canvas?) {
         if(canvas == null) return
 
-        canvas.helpGreenCurtain(debug)
+        //canvas.helpGreenCurtain(debug) //绘制辅助背景
         //绘制阴影
         drawShadow(canvas)
 
