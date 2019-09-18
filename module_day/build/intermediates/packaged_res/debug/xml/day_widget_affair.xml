@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialKeyguardLayout="@layout/day_widget_small_affair"
+    android:initialLayout="@layout/day_widget_small_affair"
+    android:minWidth="240dp"
+    android:minHeight="130dp"
+    android:previewImage="@drawable/day_preview_widget"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="50000"
+    android:widgetCategory="home_screen">
+
+</appwidget-provider>

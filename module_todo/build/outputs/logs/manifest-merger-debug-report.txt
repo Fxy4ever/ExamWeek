@@ -1,0 +1,35 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:2:1-13:12
+INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:2:1-13:12
+	package
+		ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:4:5-33
+		INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+		INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:3:5-51
+	xmlns:android
+		ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:6:5-11:19
+	tools:ignore
+		ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:7:9-48
+activity#com.fxy.moduletodo.debug.TestActivity
+ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:8:9-10:20
+	android:name
+		ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml:8:19-53
+uses-sdk
+INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+		ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+		INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+		ADDED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml
+		INJECTED from /Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/AndroidManifest.xml

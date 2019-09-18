@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="day_black">#000000</color>
+    <color name="day_blue">#798DFA</color>
+    <color name="day_blue2">#697AD9</color>
+    <color name="day_origin">#DE7717</color>
+    <color name="day_origin2">#CF6E16</color>
+    <color name="day_white">#FFFFFF</color>
+    <color name="daymatters_rv_bg">#F0EDED</color>
+    <dimen name="widget_margin">8dp</dimen>
+    <string name="add_widget">Add widget</string>
+    <string name="app_name">module_day_matters</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="day_btn_change">修改</string>
+    <string name="day_btn_change_bg">背景</string>
+    <string name="day_btn_delete">删除</string>
+    <string name="day_btn_save">保存</string>
+    <string name="day_et_affair_name">请输入事件名称</string>
+    <string name="day_fab_btn_add">添加事务</string>
+    <string name="day_fab_btn_classify">选择分类</string>
+    <string name="day_fab_btn_layout">更改布局</string>
+    <string name="day_notify">还没有事件呢,请点击添加!~</string>
+    <string name="day_sw_chinese">农历</string>
+    <string name="day_sw_new">新历</string>
+    <string name="day_tv_affair_name">事件名称</string>
+    <string name="day_tv_chinese_day">是否为农历</string>
+    <string name="day_tv_classify">分类</string>
+    <string name="day_tv_end_day">结束日</string>
+    <string name="day_tv_notify">每日提醒</string>
+    <string name="day_tv_target_day">目标日</string>
+    <string name="day_tv_target_info">(未来日期为倒数,过去日期为正数)</string>
+    <style name="day_MenuButtonsStyle">
+        <item name="fab_size">mini</item>
+        <item name="fab_showAnimation">@anim/jump_from_down</item>
+        <item name="fab_hideAnimation">@anim/jump_to_down</item>
+        <item name="fab_shadowColor">#444</item>
+        <item name="fab_colorNormal">@color/day_blue2</item>
+        <item name="fab_colorPressed">@color/day_blue</item>
+        <item name="fab_colorRipple">@color/day_blue</item>
+    </style>
+    <style name="day_MenuLabelsStyle">
+        <item name="android:background">@drawable/day_fab_label_background</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">none</item>
+    </style>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.fxy.moduletodo" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="26" />
+
+    <application tools:ignore="GoogleAppIndexingWarning" >
+        <activity android:name="com.fxy.moduletodo.debug.TestActivity" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_todo/build/intermediates/res/merged/debug/mipmap-anydpi-v26/ic_launcher_round.xml",
+        "source": "/Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_todo/build/intermediates/res/merged/debug/mipmap-anydpi-v26/ic_launcher.xml",
+        "source": "/Users/fxy/Android/redrock/ExamWeek/module_todo/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    }
+]

@@ -1,0 +1,126 @@
+[
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/basepopup_fade_out.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/BasePopup-2.1.9.aar/f5e5bf341370c62dfd9123345dffbe65/res/anim/basepopup_fade_out.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/jump_to_down.xml",
+        "source": "/Users/fxy/Android/redrock/ExamWeek/module_day/src/main/res/anim/jump_to_down.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_tooltip_exit.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_tooltip_exit.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/jump_from_down.xml",
+        "source": "/Users/fxy/Android/redrock/ExamWeek/module_day/src/main/res/anim/jump_from_down.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/fab_slide_out_to_right.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/5ecad366625cac778264a88c3a0bd9a9/res/anim/fab_slide_out_to_right.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/fab_slide_in_from_left.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/5ecad366625cac778264a88c3a0bd9a9/res/anim/fab_slide_in_from_left.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8d4745b4bbd34681b4bcaf7a419dc311/res/anim/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/fab_slide_in_from_right.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/5ecad366625cac778264a88c3a0bd9a9/res/anim/fab_slide_in_from_right.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/basepopup_fade_in.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/BasePopup-2.1.9.aar/f5e5bf341370c62dfd9123345dffbe65/res/anim/basepopup_fade_in.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/slide_out_right.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/swipebackhelper-3.1.2.aar/84a4f06fdc649ebfabaa14e70acb6d67/res/anim/slide_out_right.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8d4745b4bbd34681b4bcaf7a419dc311/res/anim/design_snackbar_in.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/fab_scale_down.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/5ecad366625cac778264a88c3a0bd9a9/res/anim/fab_scale_down.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_tooltip_enter.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_tooltip_enter.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/popup_exit.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/anim/popup_exit.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/slide_in_right.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/swipebackhelper-3.1.2.aar/84a4f06fdc649ebfabaa14e70acb6d67/res/anim/slide_in_right.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/fab_scale_up.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/5ecad366625cac778264a88c3a0bd9a9/res/anim/fab_scale_up.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/popup_enter.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/anim/popup_enter.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/decelerate_cubic.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/anim/decelerate_cubic.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8d4745b4bbd34681b4bcaf7a419dc311/res/anim/design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8d4745b4bbd34681b4bcaf7a419dc311/res/anim/design_snackbar_out.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/anim/fab_slide_out_to_left.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/fab-1.6.4.aar/5ecad366625cac778264a88c3a0bd9a9/res/anim/fab_slide_out_to_left.xml"
+    }
+]

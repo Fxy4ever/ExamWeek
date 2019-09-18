@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/48e5be4302ae418a50241d28963d1af8/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/md_btn_shape.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/drawable-v21/md_btn_shape.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/design_bottom_navigation_item_background.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8d4745b4bbd34681b4bcaf7a419dc311/res/drawable-v21/design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/avd_show_password.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8d4745b4bbd34681b4bcaf7a419dc311/res/drawable-v21/avd_show_password.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/design_password_eye.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8d4745b4bbd34681b4bcaf7a419dc311/res/drawable-v21/design_password_eye.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/md_btn_selector_ripple.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/drawable-v21/md_btn_selector_ripple.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/md_btn_selector_ripple_dark.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/drawable-v21/md_btn_selector_ripple_dark.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-v21/avd_hide_password.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8d4745b4bbd34681b4bcaf7a419dc311/res/drawable-v21/avd_hide_password.xml"
+    }
+]

@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/values-v18/values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/9e2e60b8c5199dfd6d75a4d7894b2296/res/values-v18/values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

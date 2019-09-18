@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:layout_margin="3dp"
+    android:background="@drawable/day_widget_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/day_item_red_hor_layout"
+    >
+    <TextView
+        android:id="@+id/day_item_red_hor_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="start|center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/day_black"
+        android:textSize="16sp"
+        tools:text="开学已经" />
+    <LinearLayout
+        android:layout_gravity="end"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/day_item_red_hor_num"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@color/day_origin"
+            android:textColor="@color/day_white"
+            android:textSize="18sp"
+            tools:text="83" />
+        <TextView
+            android:id="@+id/day_item_red_hor_day"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:background="@color/day_origin2"
+            android:textColor="@color/day_white"
+            android:textSize="18sp"
+            android:text="天" />
+    </LinearLayout>
+</FrameLayout>

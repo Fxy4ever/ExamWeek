@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-ldpi-v4/common_ic_back.png",
+        "source": "/Users/fxy/Android/redrock/ExamWeek/lib_common/build/intermediates/packaged_res/debug/drawable-ldpi-v4/common_ic_back.png"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-ldpi-v4/day_ic_layout.png",
+        "source": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/generated/res/pngs/debug/drawable-ldpi/day_ic_layout.png"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-ldpi-v4/day_ic_class.png",
+        "source": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/generated/res/pngs/debug/drawable-ldpi/day_ic_class.png"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/drawable-ldpi-v4/md_nav_back.png",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/drawable-ldpi-v4/md_nav_back.png"
+    }
+]

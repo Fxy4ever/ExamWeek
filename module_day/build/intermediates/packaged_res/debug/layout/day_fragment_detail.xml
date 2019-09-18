@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.fxy.lib.widget.JCardViewPlus xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:shadowRadius="10dp"
+    app:shadowColor="#BFBCBC"
+    android:clipChildren="false"
+    app:cardCornerRadius="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/day_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/day_white"
+            android:textSize="14sp"
+            tools:text="开学已经" />
+
+        <TextView
+            android:id="@+id/day_detail_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/day_black"
+            android:textSize="108sp"
+            android:textStyle="bold"
+            tools:text="83" />
+
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:background="#E9E6E6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/day_detail_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:padding="10dp"
+                tools:text="2018-12-28 星期五" />
+        </LinearLayout>
+    </FrameLayout>
+</com.fxy.lib.widget.JCardViewPlus>

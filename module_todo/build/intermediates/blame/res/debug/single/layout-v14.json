@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_todo/build/intermediates/res/merged/debug/layout-v14/md_stub_progress_indeterminate_horizontal.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/layout-v14/md_stub_progress_indeterminate_horizontal.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_todo/build/intermediates/res/merged/debug/layout-v14/md_stub_progress_indeterminate.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/layout-v14/md_stub_progress_indeterminate.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_todo/build/intermediates/res/merged/debug/layout-v14/md_stub_progress.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/layout-v14/md_stub_progress.xml"
+    }
+]

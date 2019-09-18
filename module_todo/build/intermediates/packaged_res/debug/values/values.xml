@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ShadowLayout"><attr format="dimension" name="shadowRadius"/><attr format="color" name="shadowColor"/><attr format="dimension" name="shadowWidth"/><attr format="dimension" name="shadowHeight"/><attr format="dimension" name="cornerRadius"/><attr format="dimension" name="borderWidth"/><attr format="dimension" name="borderColor"/><attr format="flags" name="shadowSides">
+            <flag name="Left" value="1"/>
+            <flag name="Right" value="2"/>
+            <flag name="Top" value="4"/>
+            <flag name="Bottom" value="8"/>
+            <flag name="All" value="15"/>
+        </attr></declare-styleable>
+    <string name="app_name">module_todo</string>
+    <string name="todo_main_hint">今天的todo已经被你消灭完啦！</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+</resources>

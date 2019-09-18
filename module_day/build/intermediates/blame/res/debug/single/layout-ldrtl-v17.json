@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/layout-ldrtl-v17/md_listitem_singlechoice.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/layout-ldrtl-v17/md_listitem_singlechoice.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/layout-ldrtl-v17/md_listitem_multichoice.xml",
+        "source": "/Users/fxy/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/a9335ab5f784e508a752b3ce9d3ebd42/res/layout-ldrtl-v17/md_listitem_multichoice.xml"
+    }
+]

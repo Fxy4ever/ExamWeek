@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools">
+
+    <TextView
+        android:text="@string/day_notify"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/day_main_sr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/day_main_rv"
+            android:background="@color/daymatters_rv_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/day_main_fab_menu"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="15dp"
+        app:menu_shadowColor="#444"
+        app:menu_colorPressed="@color/day_blue2"
+        app:menu_colorRipple="@color/day_blue2"
+        app:menu_colorNormal="@color/day_blue2"
+        app:menu_fab_size="normal"
+        app:menu_fab_label="更多功能"
+        app:menu_labels_showAnimation="@anim/jump_from_down"
+        app:menu_labels_hideAnimation="@anim/jump_to_down"
+        app:menu_animationDelayPerItem="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/day_main_fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fab_add"
+            app:fab_label="添加"
+            style="@style/day_MenuButtonsStyle" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/day_main_fab_classify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/day_ic_class"
+            app:fab_label="@string/day_fab_btn_classify"
+            style="@style/day_MenuButtonsStyle" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/day_main_fab_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/day_ic_layout"
+            app:fab_label="@string/day_fab_btn_layout"
+            style="@style/day_MenuButtonsStyle" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+</FrameLayout>

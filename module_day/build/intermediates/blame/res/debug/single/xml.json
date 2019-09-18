@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/xml/common_file_path.xml",
+        "source": "/Users/fxy/Android/redrock/ExamWeek/lib_common/build/intermediates/packaged_res/debug/xml/common_file_path.xml"
+    },
+    {
+        "merged": "/Users/fxy/Android/redrock/ExamWeek/module_day/build/intermediates/res/merged/debug/xml/day_widget_affair.xml",
+        "source": "/Users/fxy/Android/redrock/ExamWeek/module_day/src/main/res/xml/day_widget_affair.xml"
+    }
+]
