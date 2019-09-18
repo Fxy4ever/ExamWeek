@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">module_todo</string>
+    <string name="todo_main_hint">今天的todo已经被你消灭完啦！</string>
+</resources>

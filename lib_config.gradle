@@ -20,6 +20,13 @@ android {
         targetSdkVersion build_versions.target_sdk
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            //ARouter
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
     }
 
     dataBinding {

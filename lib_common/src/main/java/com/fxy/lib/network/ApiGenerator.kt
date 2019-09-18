@@ -20,12 +20,16 @@ object ApiGenerator {
     private var builder: OkHttpClient.Builder = OkHttpClient.Builder()
 
     init {
-        builder.connectTimeout(TIME_OUT.toLong(), TimeUnit.SECONDS)
+        builder.writeTimeout((TIME_OUT*5).toLong(), TimeUnit.MILLISECONDS)
+        builder.readTimeout((TIME_OUT*5).toLong(), TimeUnit.MILLISECONDS)
+        builder.connectTimeout((TIME_OUT*5).toLong(), TimeUnit.MILLISECONDS)
+
         if (BuildConfig.DEBUG) {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
             builder.addInterceptor(logging)
         }
+
         okHttpClient = builder.build()
         retrofit = buildRetrofit(BASE_URL)
     }

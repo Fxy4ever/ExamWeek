@@ -1,5 +1,6 @@
 package com.fxy.lib.utils.extensions
 
+import com.fxy.lib.network.NetworkRetry
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,3 +26,7 @@ fun <T> Observable<T>.safeSubscribeBy(
         onComplete: () -> Unit
 ) = subscribe(onNext, onError, onComplete)
 
+fun <T> Observable<T>.networkRetry(
+        maxRetryTimes:Int = 3,
+        retryDelayMillis: Int=1000):Observable<T> =
+        this.retryWhen(NetworkRetry(maxRetryTimes,retryDelayMillis))

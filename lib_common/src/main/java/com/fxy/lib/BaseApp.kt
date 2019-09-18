@@ -6,6 +6,7 @@ import android.support.multidex.BuildConfig
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
+import com.fxy.lib.network.ApiGenerator
 import com.umeng.analytics.MobclickAgent
 import com.umeng.commonsdk.UMConfigure
 
@@ -34,10 +35,10 @@ open class BaseApp : MultiDexApplication() {
     }
 
     private fun initARouter(){
-        if(BuildConfig.DEBUG){
+        //if(BuildConfig.DEBUG){
             ARouter.openDebug()
             ARouter.openLog()
-        }
+        //}
         ARouter.init(this)
     }
 
@@ -46,6 +47,6 @@ open class BaseApp : MultiDexApplication() {
         MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL)
         MobclickAgent.openActivityDurationTrack(false)
         //调试模式（推荐到umeng注册测试机，避免数据污染）
-        UMConfigure.setLogEnabled(BuildConfig.DEBUG)
+        //UMConfigure.setLogEnabled(BuildConfig.DEBUG)
     }
 }

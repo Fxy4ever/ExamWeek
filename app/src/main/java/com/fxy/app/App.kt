@@ -1,6 +1,8 @@
 package com.fxy.app
 
+import android.content.Context
 import android.os.Process
+import android.support.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.exam.app.BuildConfig
 import com.fxy.lib.BaseApp
@@ -16,7 +18,16 @@ class App : BaseApp() {
     override fun onCreate() {
         super.onCreate()
         initBugly()
+        if(BuildConfig.DEBUG){
+            ARouter.openDebug()
+            ARouter.openLog()
+        }
         ARouter.init(this)
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        MultiDex.install(context)
     }
 
     private fun initBugly(){

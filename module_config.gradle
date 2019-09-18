@@ -12,8 +12,8 @@ apply plugin: 'kotlin-kapt'
 
 android{
     //这里在version.gradle中配置了
-    compileSdkVersion build_versions.target_sdk
-    buildToolsVersion build_versions.build_tools
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
 
     //使用resourcePrefix约束资源前缀
     resourcePrefix "${project.getName().replaceAll("module_", "")}_"
@@ -21,11 +21,10 @@ android{
     defaultConfig{
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
-
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
         kapt {
-            //Arouter
+            //ARouter
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())
             }
@@ -40,7 +39,7 @@ android{
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 java {
-                    exclude 'debug/**'//打包时忽略debug
+                    exclude 'com.fxy.daymatters.debug/**'//打包时忽略debug
                 }
             }
         }

@@ -1,9 +1,5 @@
 package com.fxy.lib.widget
 
-/**
- * create by:Fxymine4ever
- * time: 2019/1/31
- */
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.*
